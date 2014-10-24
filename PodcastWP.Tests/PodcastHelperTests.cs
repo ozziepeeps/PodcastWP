@@ -75,5 +75,17 @@
 
             this.launcher.VerifyAll();
         }
+
+        [TestMethod]
+        public void Subscribe()
+        {
+            var expectedUri = new Uri("wp-podcast://Subscribe/?feedUrl=http%3A%2F%2Ftwit.tv%2Fww");
+
+            this.launcher.Setup(s => s.LaunchUriAsync(expectedUri)).Verifiable();
+
+            PodcastHelper.SubscribeToPodcast(new Uri("http://twit.tv/ww"));
+
+            this.launcher.VerifyAll();
+        }
     }
 }
