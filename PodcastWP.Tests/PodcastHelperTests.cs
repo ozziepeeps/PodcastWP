@@ -27,5 +27,53 @@
 
             this.launcher.VerifyAll();
         }
+
+        [TestMethod]
+        public void Play()
+        {
+            var expectedUri = new Uri("wp-podcast://Play");
+
+            this.launcher.Setup(s => s.LaunchUriAsync(expectedUri)).Verifiable();
+
+            PodcastHelper.CommandPodcastApp(PodcastCommand.Play);
+
+            this.launcher.VerifyAll();
+        }
+
+        [TestMethod]
+        public void Pause()
+        {
+            var expectedUri = new Uri("wp-podcast://Pause");
+
+            this.launcher.Setup(s => s.LaunchUriAsync(expectedUri)).Verifiable();
+
+            PodcastHelper.CommandPodcastApp(PodcastCommand.Pause);
+
+            this.launcher.VerifyAll();
+        }
+
+        [TestMethod]
+        public void SkipNext()
+        {
+            var expectedUri = new Uri("wp-podcast://SkipNext");
+
+            this.launcher.Setup(s => s.LaunchUriAsync(expectedUri)).Verifiable();
+
+            PodcastHelper.CommandPodcastApp(PodcastCommand.SkipNext);
+
+            this.launcher.VerifyAll();
+        }
+
+        [TestMethod]
+        public void SkipPrevious()
+        {
+            var expectedUri = new Uri("wp-podcast://SkipPrevious");
+
+            this.launcher.Setup(s => s.LaunchUriAsync(expectedUri)).Verifiable();
+
+            PodcastHelper.CommandPodcastApp(PodcastCommand.SkipPrevious);
+
+            this.launcher.VerifyAll();
+        }
     }
 }
