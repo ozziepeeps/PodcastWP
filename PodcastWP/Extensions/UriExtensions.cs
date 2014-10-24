@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-
-namespace PodcastWP.Extensions
+﻿namespace PodcastWP.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+
     internal static class UriExtensions
     {
         /// <summary>
@@ -40,9 +40,7 @@ namespace PodcastWP.Extensions
         {
             var uriString = uri.IsAbsoluteUri ? uri.AbsoluteUri : uri.OriginalString;
 
-            return uriString.Split('/')
-                .Where(x => (!string.IsNullOrEmpty(x) && !x.Contains(':')))
-                .First();
+            return uriString.Split('/').First(x => (!string.IsNullOrEmpty(x) && !x.Contains(':')));
         }
     }
 }

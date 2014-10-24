@@ -15,11 +15,11 @@ namespace PodcastWP
         private const string FeedUrlArgument = "feedUrl";
 
         /// <summary>
-        /// Launches a podcast app w/ a specified command
+        /// Launches a podcast app w/ a specified command.
         /// </summary>
         /// <param name="command">The command.</param>
-        /// <param name="playMode">The mode of playback</param>
-        /// <param name="uiMode">The mode of the UI</param>
+        /// <param name="playMode">The mode of playback.</param>
+        /// <param name="uiMode">The mode of the UI.</param>
         /// <param name="callbackUri">The callback URI for your app if you want to be called back after the podcast app finishes its command.</param>
         /// <param name="callbackName">The name of your app which could be displayed in the target podcast app</param>
         public static async void CommandPodcastApp(PodcastCommand command, PlayMode playMode = PlayMode.None, UiMode uiMode = UiMode.Standard, string callbackUri = "", string callbackName = "")
@@ -44,11 +44,11 @@ namespace PodcastWP
         }
 
         /// <summary>
-        /// Launches a podcast app w/ a request to subscribe to a specified podcast
+        /// Launches a podcast app w/ a request to subscribe to a specified podcast.
         /// </summary>
-        /// <param name="feedUrl">Url for the podcast feed</param>
+        /// <param name="feedUrl">Url for the podcast feed.</param>
         /// <param name="callbackUri">The callback URI for your app if you want to be called back after the podcast app finishes its command.</param>
-        /// <param name="callbackName">The name of your app which could be displayed in the target podcast app</param>
+        /// <param name="callbackName">The name of your app which could be displayed in the target podcast app.</param>
         public static async void SubscribeToPodcast(Uri feedUrl, string callbackUri = "", string callbackName = "")
         {
             var uri = string.Format("{0}{1}/", PodcastScheme, PodcastCommand.Subscribe.ToString());
@@ -69,10 +69,10 @@ namespace PodcastWP
         }
 
         /// <summary>
-        /// Determines whether the specified URI uses the podcast URI scheme
+        /// Determines whether the specified URI uses the podcast URI scheme.
         /// </summary>
         /// <param name="uri">The URI.</param>
-        /// <returns>True if pocket data is present</returns>
+        /// <returns>True if pocket data is present.</returns>
         public static bool HasPodcastUri(Uri uri)
         {
             if (uri.ToString().Contains(PodcastScheme))
@@ -88,7 +88,7 @@ namespace PodcastWP
         /// Retrieves the podcast action.
         /// </summary>
         /// <param name="uri">The URI.</param>
-        /// <returns>The deserialised podcast action</returns>
+        /// <returns>The deserialised podcast action.</returns>
         public static PodcastAction RetrievePodcastAction(Uri uri)
         {
             string podcastUri = string.Empty;

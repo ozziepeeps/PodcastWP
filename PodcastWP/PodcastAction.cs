@@ -3,7 +3,7 @@
     public class PodcastAction
     {
         /// <summary>
-        /// Gets or sets the command that was requested from the calling app
+        /// Gets or sets the command that was requested from the calling app.
         /// </summary>
         /// <value>
         /// The command to perform.
@@ -11,7 +11,7 @@
         public PodcastCommand Command { get; set; }
 
         /// <summary>
-        /// Gets or sets the play mode that was requested from the calling app
+        /// Gets or sets the play mode that was requested from the calling app.
         /// </summary>
         /// <value>
         /// The mode of play.
@@ -19,7 +19,7 @@
         public PlayMode PlayMode { get; set; }
 
         /// <summary>
-        /// Gets or sets the UI mode that was requested from the calling app
+        /// Gets or sets the UI mode that was requested from the calling app.
         /// </summary>
         /// <value>
         /// The mode of the UI.
@@ -27,7 +27,7 @@
         public UiMode UiMode { get; set; }
 
         /// <summary>
-        /// Gets or sets the url of the podcast feed you want the podcast app to subscribe to
+        /// Gets or sets the url of the podcast feed you want the podcast app to subscribe to.
         /// </summary>
         /// <value>
         /// The URl of the podcast feed
@@ -43,7 +43,7 @@
         public string CallbackUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the callback name of your app
+        /// Gets or sets the callback name of your app.
         /// </summary>
         /// <value>
         /// The callback apps name

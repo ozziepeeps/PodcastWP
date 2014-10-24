@@ -9,17 +9,4 @@
         SkipPrevious,
         Subscribe
     }
-
-    public enum PlayMode
-    {
-        None,
-        Recent,
-        Random
-    }
-
-    public enum UiMode
-    {
-        Standard,
-        Car
-    }
 }

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PodcastWP.Universal/bin/Release
+/PodcastWP.Universal/obj/Release
+*.suo
+/PodcastWP/Bin/x86/Release
+/PodcastWP/obj/x86/Release
