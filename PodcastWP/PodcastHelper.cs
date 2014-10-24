@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using PodcastWP.Extensions;
 
+    /// <summary>
+    /// Helper class for commanding podcast apps.
+    /// </summary>
     public static class PodcastHelper
     {
         private const string PodcastScheme = "wp-podcast://";

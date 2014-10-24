@@ -1,5 +1,8 @@
 ﻿namespace PodcastWP
 {
+    /// <summary>
+    /// Represents a action to a podcast app.
+    /// </summary>
     public class PodcastAction
     {
         /// <summary>

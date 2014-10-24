@@ -1,13 +1,24 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-  <metadata>
-    <id>PodcastWP</id>
-    <version>1.1</version>
-    <authors>Rob Irving</authors>
-    <owners>Rob Irving</owners>
-    <iconUrl>https://raw.github.com/robwirving/PodcastWP/master/icon.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Helper class to launch or consume wp-podcast:// uri scheme</description>
-    <tags>Podcast URI</tags>
-  </metadata>
+    <metadata>
+        <id>PodcastWP</id>
+        <version>1.1</version>
+        <authors>Rob Irving</authors>
+        <owners>Rob Irving</owners>
+        <iconUrl>https://raw.github.com/robwirving/PodcastWP/master/icon.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Helper class to launch or consume wp-podcast:// uri scheme</description>
+        <tags>Podcast URI</tags>
+    </metadata>
+    <releaseNotes>
+    </releaseNotes>
+    <files>
+        <file src="..\PodcastWP\Bin\Release\PodcastWP.dll" target="lib\wp80" />
+        <file src="..\PodcastWP\Bin\Release\PodcastWP.pdb" target="lib\wp80" />
+        <file src="..\PodcastWP\Bin\Release\PodcastWP.xml" target="lib\wp80" />
+
+        <file src="..\PodcastWP.Universal\Bin\Release\PodcastWP.dll" target="lib\wpa81" />
+        <file src="..\PodcastWP.Universal\Bin\Release\PodcastWP.pdb" target="lib\wpa81" />
+        <file src="..\PodcastWP.Universal\Bin\Release\PodcastWP.xml" target="lib\wpa81" />
+    </files>
 </package>
