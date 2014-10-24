@@ -12,3 +12,7 @@
 /PodcastWP.Tests/bin/Release
 /PodcastWP.Tests/obj/Debug
 /PodcastWP.Tests/obj/Release
+*.nupkg
+/PodcastWP/Bin/Release
+/PodcastWP/obj
+/PodcastWP.Universal/obj/Debug
