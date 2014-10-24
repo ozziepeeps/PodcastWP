@@ -16,6 +16,20 @@
         private const string Subscribe = "Subscribe";
 
         /// <summary>
+        /// Initializes static members of the <see cref="PodcastHelper"/> class.
+        /// </summary>
+        static PodcastHelper()
+        {
+            PodcastHelper.Launcher = new DefaultLauncher();
+        }
+
+        /// <summary>
+        /// Gets or sets the <see cref="ILauncher"/> implementation.
+        /// </summary>
+        /// <remarks>Internal for unit testing purposes.</remarks>
+        internal static ILauncher Launcher { get; set; }
+
+        /// <summary>
         /// Launches a podcast app w/ a specified command.
         /// </summary>
         /// <param name="command">The command.</param>
@@ -53,7 +67,7 @@
 
             uri += !string.IsNullOrEmpty(queryString) ? string.Format("?{0}", queryString) : string.Empty;
 
-            await Windows.System.Launcher.LaunchUriAsync(new Uri(uri));
+            await PodcastHelper.Launcher.LaunchUriAsync(new Uri(uri));
         }
 
         /// <summary>
@@ -88,7 +102,7 @@
 
             uri += !string.IsNullOrEmpty(queryString) ? string.Format("?{0}", queryString) : string.Empty;
 
-            await Windows.System.Launcher.LaunchUriAsync(new Uri(uri));
+            await PodcastHelper.Launcher.LaunchUriAsync(new Uri(uri));
         }
 
         /// <summary>

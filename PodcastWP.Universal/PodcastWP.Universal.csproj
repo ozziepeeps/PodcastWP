@@ -41,6 +41,12 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\PodcastWP\DefaultLauncher.cs">
+      <Link>DefaultLauncher.cs</Link>
+    </Compile>
+    <Compile Include="..\PodcastWP\ILauncher.cs">
+      <Link>ILauncher.cs</Link>
+    </Compile>
     <Compile Include="..\PodcastWP\PlayMode.cs">
       <Link>PlayMode.cs</Link>
     </Compile>
@@ -53,11 +59,13 @@
     <Compile Include="..\PodcastWP\PodcastHelper.cs">
       <Link>PodcastHelper.cs</Link>
     </Compile>
+    <Compile Include="..\PodcastWP\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\PodcastWP\UiMode.cs">
       <Link>UiMode.cs</Link>
     </Compile>
     <Compile Include="Extensions\UriExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

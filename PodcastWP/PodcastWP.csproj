@@ -83,7 +83,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DefaultLauncher.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="ILauncher.cs" />
     <Compile Include="PlayMode.cs" />
     <Compile Include="PodcastAction.cs" />
     <Compile Include="PodcastCommand.cs" />
