@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using PodcastWP.Extensions;
-
-namespace PodcastWP
+﻿namespace PodcastWP
 {
+    using System;
+    using System.Collections.Generic;
+    using PodcastWP.Extensions;
+
     public static class PodcastHelper
     {
         private const string PodcastScheme = "wp-podcast://";
@@ -13,6 +13,7 @@ namespace PodcastWP
         private const string CallbackUriArgument = "callbackUri";
         private const string CallbackNameArgument = "callbackName";
         private const string FeedUrlArgument = "feedUrl";
+        private const string Subscribe = "Subscribe";
 
         /// <summary>
         /// Launches a podcast app w/ a specified command.
@@ -24,21 +25,33 @@ namespace PodcastWP
         /// <param name="callbackName">The name of your app which could be displayed in the target podcast app</param>
         public static async void CommandPodcastApp(PodcastCommand command, PlayMode playMode = PlayMode.None, UiMode uiMode = UiMode.Standard, string callbackUri = "", string callbackName = "")
         {
-            var uri = string.Format("{0}{1}/", PodcastScheme, command.ToString());
+            var uri = string.Format("{0}{1}/", PodcastScheme, command);
 
             var queryParams = new List<string>();
+
             if (playMode != PlayMode.None)
+            {
                 queryParams.Add(string.Format("{1}={0}", playMode, PlayModeArgument));
+            }
+
             if (uiMode != UiMode.Standard)
+            {
                 queryParams.Add(string.Format("{1}={0}", uiMode, UiModeArgument));
+            }
+
             if (!string.IsNullOrEmpty(callbackUri))
+            {
                 queryParams.Add(string.Format("{1}={0}", callbackUri, CallbackUriArgument));
+            }
+
             if (!string.IsNullOrEmpty(callbackName))
+            {
                 queryParams.Add(string.Format("{1}={0}", callbackName, CallbackNameArgument));
+            }
 
             var queryString = string.Join("&", queryParams);
 
-            uri += (!string.IsNullOrEmpty(queryString) ? string.Format("?{0}", queryString) : string.Empty);
+            uri += !string.IsNullOrEmpty(queryString) ? string.Format("?{0}", queryString) : string.Empty;
 
             await Windows.System.Launcher.LaunchUriAsync(new Uri(uri));
         }
@@ -51,19 +64,29 @@ namespace PodcastWP
         /// <param name="callbackName">The name of your app which could be displayed in the target podcast app.</param>
         public static async void SubscribeToPodcast(Uri feedUrl, string callbackUri = "", string callbackName = "")
         {
-            var uri = string.Format("{0}{1}/", PodcastScheme, PodcastCommand.Subscribe.ToString());
+            var uri = string.Format("{0}{1}/", PodcastScheme, Subscribe);
 
-            var queryParams = new List<string>();
-            
-            queryParams.Add(string.Format("{1}={0}", Uri.EscapeDataString(feedUrl.OriginalString), FeedUrlArgument));
+            var queryParams = new List<string>
+                                  {
+                                      string.Format(
+                                          "{1}={0}",
+                                          Uri.EscapeDataString(feedUrl.OriginalString),
+                                          FeedUrlArgument)
+                                  };
+
             if (!string.IsNullOrEmpty(callbackUri))
+            {
                 queryParams.Add(string.Format("{1}={0}", callbackUri, CallbackUriArgument));
+            }
+
             if (!string.IsNullOrEmpty(callbackName))
+            {
                 queryParams.Add(string.Format("{1}={0}", callbackName, CallbackNameArgument));
+            }
 
             var queryString = string.Join("&", queryParams);
 
-            uri += (!string.IsNullOrEmpty(queryString) ? string.Format("?{0}", queryString) : string.Empty);
+            uri += !string.IsNullOrEmpty(queryString) ? string.Format("?{0}", queryString) : string.Empty;
 
             await Windows.System.Launcher.LaunchUriAsync(new Uri(uri));
         }
@@ -76,14 +99,14 @@ namespace PodcastWP
         public static bool HasPodcastUri(Uri uri)
         {
             if (uri.ToString().Contains(PodcastScheme))
-                return true;
-            else
             {
-                var escapedProtocol = Uri.EscapeDataString(PodcastScheme);
-                return uri.ToString().Contains(escapedProtocol);
+                return true;
             }
+
+            var escapedProtocol = Uri.EscapeDataString(PodcastScheme);
+            return uri.ToString().Contains(escapedProtocol);
         }
-        
+
         /// <summary>
         /// Retrieves the podcast action.
         /// </summary>
@@ -91,9 +114,12 @@ namespace PodcastWP
         /// <returns>The deserialised podcast action.</returns>
         public static PodcastAction RetrievePodcastAction(Uri uri)
         {
-            string podcastUri = string.Empty;
+            string podcastUri;
+
             if (uri.ToString().Contains(PodcastScheme))
+            {
                 podcastUri = uri.ToString();
+            }
             else
             {
                 podcastUri = uri.ToString().Replace("/Protocol?encodedLaunchUri=", string.Empty);
@@ -103,7 +129,7 @@ namespace PodcastWP
             var commandString = new Uri(podcastUri, UriKind.Absolute).CommandString();
             var queryString = new Uri(podcastUri, UriKind.Absolute).QueryString();
 
-            PodcastCommand command = (PodcastCommand)Enum.Parse(typeof(PodcastCommand), commandString, true);
+            var command = (PodcastCommand)Enum.Parse(typeof(PodcastCommand), commandString, true);
 
             var playMode = queryString.ContainsKey(PlayModeArgument) ? (PlayMode)Enum.Parse(typeof(PlayMode), queryString[PlayModeArgument], true) : PlayMode.None;
             var uiMode = queryString.ContainsKey(UiModeArgument) ? (UiMode)Enum.Parse(typeof(UiMode), queryString[UiModeArgument], true) : UiMode.Standard;
@@ -111,7 +137,7 @@ namespace PodcastWP
             var callbackName = queryString.ContainsKey(CallbackNameArgument) ? queryString[CallbackNameArgument] : string.Empty;
             var feedUrl = queryString.ContainsKey(FeedUrlArgument) ? new Uri(Uri.UnescapeDataString(queryString[FeedUrlArgument]), UriKind.RelativeOrAbsolute) : null;
 
-            PodcastAction action = new PodcastAction
+            var action = new PodcastAction
             {
                 Command = command,
                 PlayMode = playMode,

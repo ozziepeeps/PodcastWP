@@ -6,7 +6,6 @@
         Play,
         Pause,
         SkipNext,
-        SkipPrevious,
-        Subscribe
+        SkipPrevious
     }
 }
