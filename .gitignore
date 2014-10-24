@@ -8,3 +8,7 @@
 /PodcastWP/Bin/x86/Release
 /PodcastWP/obj/x86/Release
 *.user
+/PodcastWP/packages
+/PodcastWP.Tests/bin/Release
+/PodcastWP.Tests/obj/Debug
+/PodcastWP.Tests/obj/Release
